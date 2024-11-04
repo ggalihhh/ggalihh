@@ -1,0 +1,32 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f8fafb; }
+
+/* ... (kode lainnya tetap sama) ... */
+
+.content .btn {
+  height: 54px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #000000; /* Warna hitam untuk tombol */
+  color: #ffffff; /* Warna teks putih untuk tombol */
+}
+
+.content .btn:hover {
+  background-color: #333333; /* Warna hitam yang lebih terang saat hover */
+}
+
+/* ... (kode lainnya tetap sama) ... */
+
+.control input:checked ~ .control__indicator {
+  background: #08080a; }
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #050506; }
+
+/* ... (kode lainnya tetap sama) ... */
+
+.control--checkbox input:disabled:checked ~ .control__indicator {
+  background-color: #060506;
+  opacity: .2; }

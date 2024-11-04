@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Define the dark theme colors */
+        body {
+          background: linear-gradient(45deg, #f50c0c, #410101, #0c0303); /* Gradient background with maroon colors */
+            background-size: 300% 300%; /* Allows for the animation effect */
+            animation: gradientAnimation 15s ease infinite; /* Animation effect */
+            color: #f0f0f0; /* Light gray text color for general text */
+            font-family: 'Roboto', sans-serif; /* Set font family */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #ffffff; /* White text for headings */
+        }
+
+        a {
+            color: #1e90ff; /* Bright blue for links */
+        }
+
+        a:hover {
+            color: #ffcc00; /* Gold color on link hover */
+        }
+        
+        /* Additional styles for button or other elements */
+        .button {
+            background-color: #c54949; /* Darker button background */
+            color: #f0f0f0; /* Light text color for buttons */
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .button:hover {
+            background-color: #777; /* Lighter button background on hover */
+        }
+    </style>
+
+    <title>Sign In/Sign Up</title>
+</head>
+
+
+
+
+  <body>
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="images/pngwing.com.png" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <h3 id="form-title">Sign In</h3>
+                <p class="mb-4">Tidak Punya Akun? Daftar Segera</p>
+              </div>
+              <form action="#" method="post" id="auth-form">
+                <!-- Sign In Form -->
+                <div class="form-group first" id="username-field">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username" required>
+                </div>
+                
+                <div class="form-group last mb-4" id="password-field">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" required>
+                </div>
+
+                <!-- Extra fields for Sign-Up -->
+                <div class="form-group last mb-4" id="email-field" style="display:none;">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+
+                <div class="d-flex mb-5 align-items-center" id="remember-section">
+                  <label class="control control--checkbox mb-0">
+                    <span class="caption">Remember me</span>
+                    <input type="checkbox" checked="checked"/>
+                    <div class="control__indicator"></div>
+                  </label>
+                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                </div>
+
+                <input type="submit" value="Log In" class="btn btn-block btn-primary" id="submit-btn">
+
+                <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+                
+                <div class="social-login">
+                  <a href="#" class="facebook">
+                    <span class="icon-facebook mr-3"></span> 
+                  </a>
+                  <a href="#" class="twitter">
+                    <span class="icon-twitter mr-3"></span> 
+                  </a>
+                  <a href="#" class="google">
+                    <span class="icon-google mr-3"></span> 
+                  </a>
+                </div>
+              </form>
+
+              <div class="text-center mt-3">
+                <span id="toggle-message">Don't have an account? <a href="#" id="toggle-form">Sign Up</a></span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to toggle between Sign In and Sign Up
+    const formTitle = document.getElementById('form-title');
+    const submitBtn = document.getElementById('submit-btn');
+    const toggleMessage = document.getElementById('toggle-message');
+    const emailField = document.getElementById('email-field');
+    const rememberSection = document.getElementById('remember-section');
+
+    let isSignUp = false;
+
+    // Function to add click event listener
+    function addToggleListener() {
+        const toggleForm = document.getElementById('toggle-form');
+        toggleForm.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (isSignUp) {
+                // Switching to Sign In
+                formTitle.innerText = 'Sign In';
+                submitBtn.value = 'Log In';
+                emailField.style.display = 'none';
+                rememberSection.style.display = 'flex';
+                toggleMessage.innerHTML = "Don't have an account? <a href='#' id='toggle-form'>Sign Up</a>";
+                isSignUp = false;
+            } else {
+                // Switching to Sign Up
+                formTitle.innerText = 'Sign Up';
+                submitBtn.value = 'Sign Up';
+                emailField.style.display = 'block';
+                rememberSection.style.display = 'none';
+                toggleMessage.innerHTML = "Already have an account? <a href='#' id='toggle-form'>Log In</a>";
+                isSignUp = true;
+            }
+            // Re-assign the click event listener
+            addToggleListener();
+        });
+    }
+
+    // Initial setup
+    addToggleListener(); // Add the initial event listener
+
+    // jQuery code to handle input fields
+    $(function() {
+        'use strict';
+        
+        $('.form-control').on('input', function() {
+            var $field = $(this).closest('.form-group');
+            if (this.value) {
+                $field.addClass('field--not-empty');
+            } else {
+                $field.removeClass('field--not-empty');
+            }
+        });
+    });
+</script>
+</body>
+</html>
